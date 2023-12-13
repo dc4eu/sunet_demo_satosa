@@ -1,0 +1,17 @@
+module: ds.DS
+name: DS
+config:
+  #ds_uri: https://idpproxy.dev.eduid.se/select
+  ds_uri: https://ladok3-idp.its.umu.se/select
+  response_endpoint: ds
+  choices:
+    - id: https://idp.dev.eduid.se/idp.xml
+      name: eduID (dev)
+      backend: Saml2SP
+      type: saml
+    - id: https://accounts.google.com
+      name: Google
+      backend: google
+    - id: https://bankid.org
+      name: BankID
+      backend: bankid

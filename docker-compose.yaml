@@ -1,0 +1,37 @@
+---
+version: "3"
+
+services:
+  satosa:
+    container_name: "vc_satosa"
+    build:
+      context: .
+      dockerfile: satosa/Dockerfile
+    depends_on:
+      - redis
+    ports:
+      - 8085:8085
+
+  redis:
+    image: "redis:latest"
+    ports:
+      - 6379
+    volumes:
+    - ./redis_data:/var/lib/redis/data
+
+  issuer:
+    container_name: "vc_issuer"
+    build:
+      context: .
+      dockerfile: issuer/Dockerfile
+    depends_on:
+      - redis
+      - satosa
+    ports:
+      - 8080:8080
+    environment:
+      - PKCS11_TOKEN=my_test_token_1
+      - PKCS11_PIN=1234
+      - PKCS11_MODULE=/usr/lib/softhsm/libsofthsm2.so
+      - REDIS_URL=redis
+      - SATOSA_URL=satosa:8085

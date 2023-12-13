@@ -1,0 +1,36 @@
+# module: satosa_static_ds.DS
+# name: DS
+# config:
+#   #ds_uri: https://idpproxy.dev.eduid.se/select
+#   discovery_endpoint: https://127.0.0.1:8080
+#   response_endpoint: ds
+#   discovery_page: index.html
+#   choices:
+#     - id: https://idp.dev.eduid.se/idp.xml
+#       name: eduID (dev)
+#       backend: Saml2SP
+#       type: saml
+#     - id: https://127.0.0.1:5000
+#       name: Homebrew
+#       backend: oidc
+#     - id: https://bankid.org
+#       name: BankID
+#       backend: bankid
+
+module: satosa_static_ds.DS
+name: DS
+config:
+  #ds_uri: https://idpproxy.dev.eduid.se/select
+  ds_uri: https://ladok3-idp.its.umu.se/select
+  response_endpoint: ds
+  choices:
+    - id: https://idp.dev.eduid.se/idp.xml
+      name: eduID (dev)
+      backend: Saml2SP
+      type: saml
+    - id: https://accounts.google.com
+      name: Google
+      backend: google
+    - id: https://bankid.org
+      name: BankID
+      backend: bankid

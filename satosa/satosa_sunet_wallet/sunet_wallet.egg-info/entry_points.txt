@@ -1,0 +1,2 @@
+[console_scripts]
+sunet_wallet = sunet_wallet:main

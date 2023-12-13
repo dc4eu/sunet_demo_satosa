@@ -1,0 +1,76 @@
+BASE: https://127.0.0.1:8080
+
+COOKIE_STATE_NAME: "SATOSA_STATE"
+CONTEXT_STATE_DELETE: yes
+STATE_ENCRYPTION_KEY: "asdASD123456XYZV"
+STATE_INIT_VECTOR: "123456789012"
+
+cookies_samesite_compat:
+  - ["SATOSA_STATE", "SATOSA_STATE_LEGACY"]
+
+INTERNAL_ATTRIBUTES: "internal_attributes.yaml"
+
+BACKEND_MODULES:
+  - "plugins/satosa_sunet_wallet_backend.yaml"
+
+FRONTEND_MODULES:
+  - "plugins/satosa_sunet_wallet_frontend.yaml"
+#  - "plugins/oidcop_frontend.yaml"
+
+MICRO_SERVICES:
+  - "plugins/static_attributes.yaml"
+#  - "plugins/static_ds.yaml"
+
+LOGGING:
+  version: 1
+  disable_existing_loggers: False
+  formatters:
+    simple:
+      format: "[%(asctime)s] [%(levelname)s] [%(name)s.%(funcName)s] %(message)s"
+  handlers:
+    stdout:
+      class: logging.StreamHandler
+      stream: "ext://sys.stdout"
+      level: DEBUG
+      formatter: simple
+    syslog:
+      class: logging.handlers.SysLogHandler
+      address: "/dev/log"
+      level: DEBUG
+      formatter: simple
+    debug_file:
+      class: logging.FileHandler
+      filename: satosa-debug.log
+      encoding: utf8
+      level: DEBUG
+      formatter: simple
+    error_file:
+      class: logging.FileHandler
+      filename: satosa-error.log
+      encoding: utf8
+      level: ERROR
+      formatter: simple
+    info_file:
+      class: logging.handlers.RotatingFileHandler
+      filename: satosa-info.log
+      encoding: utf8
+      maxBytes: 10485760 # 10MB
+      backupCount: 20
+      level: INFO
+      formatter: simple
+  loggers:
+    satosa:
+      level: DEBUG
+    saml2:
+      level: DEBUG
+    oidcendpoint:
+      level: DEBUG
+    pyop:
+      level: DEBUG
+    oic:
+      level: DEBUG
+  root:
+    level: DEBUG
+    handlers:
+      - stdout
+      - debug_file

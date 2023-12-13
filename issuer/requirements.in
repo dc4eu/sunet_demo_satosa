@@ -1,0 +1,8 @@
+python-x509-pkcs11
+uvicorn[standard]
+fastapi
+cryptography
+requests
+redis
+asyncio
+async-timeout

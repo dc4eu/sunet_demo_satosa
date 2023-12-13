@@ -1,0 +1,2 @@
+[console_scripts]
+satosa_static_ds = satosa_static_ds:main

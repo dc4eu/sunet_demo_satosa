@@ -1,0 +1,7 @@
+module: satosa.micro_services.attribute_modifications.AddStaticAttributes
+name: AddAttributes
+config:
+    static_attributes:
+        organisation: Example Org.
+        country_name: SE
+        friendly_country_name: Sweden

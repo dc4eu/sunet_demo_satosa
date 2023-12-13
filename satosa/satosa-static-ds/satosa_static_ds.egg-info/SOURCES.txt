@@ -1,0 +1,8 @@
+ds.py
+satosa_static_ds.py
+setup.py
+satosa_static_ds.egg-info/PKG-INFO
+satosa_static_ds.egg-info/SOURCES.txt
+satosa_static_ds.egg-info/dependency_links.txt
+satosa_static_ds.egg-info/entry_points.txt
+satosa_static_ds.egg-info/top_level.txt
