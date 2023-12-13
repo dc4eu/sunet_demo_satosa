@@ -14,5 +14,8 @@ curl -vk -X POST localhost:8085/wallet -H 'Content-Type: application/json' -d '{
 
 ## See the logs
 
+```bash
 docker logs vc_satosa
 docker logs vc_issuer
+
+```
